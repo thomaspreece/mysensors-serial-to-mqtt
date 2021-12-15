@@ -11,14 +11,21 @@ python3 -m venv mysensors
 source mysensors/bin/activate
 ```
 
-## Install Dependencies 
+## Install Dependencies
 
 To install dependencies run:
 ```
 pip install -r requirements.txt
 ```
 
-## Run 
+## Set Configuration
+
+```
+cp example.env .env
+```
+Then edit `.env` with your configuration options
+
+## Run
 
 To run the serial-to-mqtt script run
 ```

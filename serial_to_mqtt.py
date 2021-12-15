@@ -2,25 +2,28 @@ from mysensors import Message
 from serial import serial_for_url
 from serial.serialutil import SerialException
 from serial.threaded import LineReader, ReaderThread
+from dotenv import load_dotenv
 import sys
 import time
 import traceback
 import paho.mqtt.client as mqtt  # pylint: disable=import-error
 import logging
 
+load_dotenv()
+
 logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
 
 _mqttc = mqtt.Client()
-_mqttc.username_pw_set("homeassistant", password="zRqQtf9kYVi4Ny^XLA97n6@6B")
-_mqttc.connect("192.168.1.100", 1883, 60)
+_mqttc.username_pw_set(os.environ["MQTT_USERNAME"], password=os.environ["MQTT_PASSWORD"])
+_mqttc.connect(os.environ["MQTT_SERVER"], 1883, 60)
 _mqttc.loop_start()
 
-in_prefix="mygateway2-out"
-out_prefix="mygateway2-in"
+in_prefix="mysensors-gateway-out"
+out_prefix="mysensors-gateway-in"
 
-PORT="/dev/ttyUSB0"
-BAUD=38400
-DEBUG=True
+PORT=os.environ["SERIAL_PORT"]
+BAUD=int(os.environ["BAUD"])
+DEBUG=(os.environ["DEBUG"] == "True")
 
 def parse_mqtt_to_message(topic, payload, qos):
     """Parse a MQTT topic and payload.

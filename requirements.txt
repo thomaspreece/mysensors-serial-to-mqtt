@@ -1,3 +1,4 @@
 paho-mqtt==1.5.1
 pyserial==3.4
 pymysensors==0.21.0
+python-dotenv
