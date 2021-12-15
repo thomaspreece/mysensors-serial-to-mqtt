@@ -19,8 +19,8 @@ _mqttc.username_pw_set(os.environ["MQTT_USERNAME"], password=os.environ["MQTT_PA
 _mqttc.connect(os.environ["MQTT_SERVER"], 1883, 60)
 _mqttc.loop_start()
 
-in_prefix="mysensors-gateway-out"
-out_prefix="mysensors-gateway-in"
+in_prefix="mysensors-gateway-in"
+out_prefix="mysensors-gateway-out"
 
 PORT=os.environ["SERIAL_PORT"]
 BAUD=int(os.environ["BAUD"])
