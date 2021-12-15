@@ -1,0 +1,10 @@
+[Unit]
+Description=Starts up MQTT mySensors Bridge
+
+[Service]
+ExecStart=/bin/env python3 /opt/mysensors-serial-to-mqtt/serial_to_mqtt.py
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target

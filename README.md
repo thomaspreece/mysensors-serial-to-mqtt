@@ -15,7 +15,7 @@ source mysensors/bin/activate
 
 To install dependencies run:
 ```
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
 ## Set Configuration
@@ -29,5 +29,13 @@ Then edit `.env` with your configuration options
 
 To run the serial-to-mqtt script run
 ```
-python ./serial_to_mqtt.py
+python3 ./serial_to_mqtt.py
+```
+
+## Persistence
+```
+sudo pip3 install -r requirements.txt
+cp ./mysensors-mqtt.service /etc/systemd/system/
+sudo systemctl enable mysensors-mqtt
+sudo systemctl start mysensors-mqtt
 ```
